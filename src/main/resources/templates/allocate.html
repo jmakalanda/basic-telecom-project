@@ -1,0 +1,59 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sim Allocation</title>
+</head>
+<body>
+<center>
+<h2>SIM Allocation Form</h2>
+ <form action="#" th:action="@{/allocate}" method="post">
+Customer name:
+<select th:field="${allocation.customerId}">
+    <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}">
+    </option>
+</select> <br/>
+SIM number:
+<select th:field="*{allocation.simId}">
+    <option th:each="sim : ${sims}" th:value="${sim.id}" th:text="${sim.phoneNumber}">
+    </option>
+</select><br/>
+    <button type="submit">Allocate</button>
+</form>
+<br/>
+<h2>Customer SIM Allocation</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th> Sim ID </th>
+        <th> Phone No </th>
+        <th> Cust ID </th>
+        <th> Cust Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allocatedsim : ${allocatedsims}">
+        <td th:text="${allocatedsim.simIid}"> </td>
+        <td th:text="${allocatedsim.phoneNumber}"></td>
+        <td th:text="${allocatedsim.customerId}"></td>
+        <td th:text="${allocatedsim.customerName}"></td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<h2>All SIM Details </h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th> Sim ID </th>
+        <th> Phone No </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sim : ${sims}">
+        <td th:text="${sim.id}"> </td>
+        <td th:text="${sim.phoneNumber}"></td>
+    </tr>
+    </tbody>
+</table>
+</center>
+</body>
+</html>

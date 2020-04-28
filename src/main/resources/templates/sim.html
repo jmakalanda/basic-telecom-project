@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sim Form</title>
+</head>
+<body>
+<center>
+<h2>Sim Form</h2>
+
+<form action="#" th:action="@{/sim}" th:object="${sim}" method="post">
+    <p>Phone number: <input type="text" th:field="*{phoneNumber}" /></p>
+
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</center>
+</body>
+</html>

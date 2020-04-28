@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+<h2>DOB Report</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th> Cust ID </th>
+        <th> Cust Name</th>
+        <th> Sim ID </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer : ${customers}">
+        <td th:text="${customer.id}"> </td>
+        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.sims}">
+            <table>
+                <tr><th>Sim ID</th></tr>
+                <tr th:each="sim : ${customer.sims}">
+                    <td th:text="${sim.id}"></td> </td>
+                </tr>
+            </table>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</center>
+</body>
+</html>
