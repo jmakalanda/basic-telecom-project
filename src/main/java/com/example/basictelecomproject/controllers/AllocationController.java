@@ -1,5 +1,4 @@
 package com.example.basictelecomproject.controllers;
-
 import com.example.basictelecomproject.domain.Sim;
 import com.example.basictelecomproject.dto.AllocatedSimDTO;
 import com.example.basictelecomproject.dto.AllocationDTO;

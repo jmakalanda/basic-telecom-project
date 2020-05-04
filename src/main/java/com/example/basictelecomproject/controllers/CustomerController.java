@@ -2,17 +2,18 @@ package com.example.basictelecomproject.controllers;
 
 import com.example.basictelecomproject.domain.Customer;
 import com.example.basictelecomproject.services.CustomerServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
-import java.util.ArrayList;
 
 @Controller
 public class CustomerController {
+
+    Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
     @Autowired
     private CustomerServiceImpl customerService;
@@ -20,6 +21,7 @@ public class CustomerController {
     @RequestMapping(value = "/getcustomer/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Customer getCusomer(@PathVariable("id") Long id) {
+        logger.info("Customer with the id " + id + " returned");
         return customerService.getCustomer(id);
     }
 
@@ -31,9 +33,7 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/customer", method = RequestMethod.POST)
-    public String addCusomer(Model model, @ModelAttribute("customer") @Valid Customer customer,
-                             Errors errors) {
-        //acctual logic happen here
+    public String addCusomer(Model model, @ModelAttribute("customer") @Valid Customer customer) {
         customerService.addCustomer(customer);
         return "customer";
     }
@@ -41,6 +41,7 @@ public class CustomerController {
     @RequestMapping(value = "/dobreport", method = RequestMethod.GET)
     public String showCusomerDOBReport(Model model) {
         model.addAttribute("customers", customerService.getCustomersHasDOToday());
+        logger.info("DOB report produced");
         return "dobreport";
     }
 }

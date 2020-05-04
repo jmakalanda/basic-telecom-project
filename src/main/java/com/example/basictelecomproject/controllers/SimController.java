@@ -1,6 +1,5 @@
 package com.example.basictelecomproject.controllers;
 
-import com.example.basictelecomproject.domain.Customer;
 import com.example.basictelecomproject.domain.Sim;
 import com.example.basictelecomproject.services.SimService;
 import org.springframework.beans.factory.annotation.Autowired;

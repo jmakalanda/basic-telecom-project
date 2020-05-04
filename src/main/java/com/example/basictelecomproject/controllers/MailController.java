@@ -71,11 +71,8 @@ public class MailController {
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String createMail(Model model,
-                             @ModelAttribute("mailObject") @Valid MailObject mailObject,
-                             Errors errors) {
-        if (errors.hasErrors()) {
-            return "send";
-        }
+                             @ModelAttribute("mailObject") @Valid MailObject mailObject) {
+
         emailService.sendSimpleMessage(mailObject.getTo(),
                 mailObject.getSubject(), mailObject.getText());
 
